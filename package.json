@@ -1,0 +1,32 @@
+{
+	"name": "next",
+	"version": "1.0.0",
+	"description": "A powerful and simple module to execute synchronous tasks or asynchronous tasks.",
+	"main": "./next.js",
+	"types": "./next.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"test": "mocha --reporter spec"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/aslamcode/next.git"
+	},
+	"keywords": [
+		"tasks",
+		"async",
+		"sync",
+		"next"
+	],
+	"author": "Guilherme Martins Arantes",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/aslamcode/next/issues"
+	},
+	"homepage": "https://github.com/aslamcode/next#readme",
+	"devDependencies": {
+		"chai": "^4.1.2",
+		"mocha": "^5.2.0",
+		"typescript": "^3.0.1"
+	}
+}
