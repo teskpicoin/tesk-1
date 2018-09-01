@@ -85,7 +85,7 @@ describe('next do test', () => {
             .execAsync();
     });
 
-    it('execAsync() - task.reject should return 13', (done) => {
+    it('execAsync() - task.reject() should return 13', (done) => {
         let result = '';
 
         next()
