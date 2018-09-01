@@ -16,7 +16,7 @@ describe('next do test', () => {
                 setTimeout(() => {
                     result += '2';
                     task.next();
-                }, 500);
+                }, 1);
             })
             .do((task) => {
                 result += '3';
@@ -27,6 +27,33 @@ describe('next do test', () => {
                 done();
             })
             .catch(() => {
+            })
+            .exec();
+    });
+
+    it('exec() - task.reject() should return 1', (done) => {
+        let result = '';
+
+        next()
+            .do((task) => {
+                result += '1';
+                task.next();
+            })
+            .do((task) => {
+                setTimeout(() => {
+                    task.reject();
+                }, 1);
+            })
+            .do((task) => {
+                result += '3';
+                task.next();
+            })
+            .finally(() => {
+                
+            })
+            .catch(() => {
+                expect(result).to.equal('1');
+                done();
             })
             .exec();
     });
@@ -43,7 +70,7 @@ describe('next do test', () => {
                 setTimeout(() => {
                     result += '2';
                     task.next();
-                }, 500);
+                }, 1);
             })
             .do((task) => {
                 result += '3';
@@ -54,6 +81,32 @@ describe('next do test', () => {
                 done();
             })
             .catch(() => {
+            })
+            .execAsync();
+    });
+
+    it('execAsync() - task.reject should return 13', (done) => {
+        let result = '';
+
+        next()
+            .do((task) => {
+                result += '1';
+                task.next();
+            })
+            .do((task) => {
+                setTimeout(() => {
+                    task.reject();
+                }, 1);
+            })
+            .do((task) => {
+                result += '3';
+                task.next();
+            })
+            .finally(() => {
+            })
+            .catch(() => {
+                expect(result).to.equal('13');
+                done();
             })
             .execAsync();
     });
@@ -69,7 +122,7 @@ describe('next forEach test', () => {
                     setTimeout(() => {
                         result += elem;
                         task.next();
-                    }, 500);
+                    }, 1);
                 }
                 else {
                     result += elem;
@@ -93,7 +146,7 @@ describe('next forEach test', () => {
                 if (index == 2) {
                     setTimeout(() => {
                         task.reject();
-                    }, 500);
+                    }, 1);
                 }
                 else {
                     result += elem;
@@ -118,7 +171,7 @@ describe('next forEach test', () => {
                     setTimeout(() => {
                         result += elem;
                         task.next();
-                    }, 500);
+                    }, 1);
                 }
                 else {
                     result += elem;
@@ -142,7 +195,7 @@ describe('next forEach test', () => {
                 if (index == 2) {
                     setTimeout(() => {
                         task.reject();
-                    }, 500);
+                    }, 1);
                 }
                 else {
                     result += elem;
