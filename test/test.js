@@ -16,7 +16,7 @@ describe('next do test', () => {
                 setTimeout(() => {
                     result += '2';
                     task.next();
-                }, 1000);
+                }, 500);
             })
             .do((task) => {
                 result += '3';
@@ -43,7 +43,7 @@ describe('next do test', () => {
                 setTimeout(() => {
                     result += '2';
                     task.next();
-                }, 1000);
+                }, 500);
             })
             .do((task) => {
                 result += '3';
@@ -69,7 +69,7 @@ describe('next forEach test', () => {
                     setTimeout(() => {
                         result += elem;
                         task.next();
-                    }, 1000);
+                    }, 500);
                 }
                 else {
                     result += elem;
@@ -85,28 +85,76 @@ describe('next forEach test', () => {
             .exec();
     });
 
+    it('exec() - task.reject() should return 12', (done) => {
+        let result = '';
+
+        next()
+            .forEach([1, 2, 3, 4], (elem, index, task) => {
+                if (index == 2) {
+                    setTimeout(() => {
+                        task.reject();
+                    }, 500);
+                }
+                else {
+                    result += elem;
+                    task.next();
+                }
+            })
+            .finally(() => {
+            })
+            .catch(() => {
+                expect(result).to.equal('12');
+                done();
+            })
+            .exec();
+    });
+
     it('execAsync() should return 1243', (done) => {
         let result = '';
 
         next()
-        .forEach([1, 2, 3, 4], (elem, index, task) => {
-            if (index == 2) {
-                setTimeout(() => {
+            .forEach([1, 2, 3, 4], (elem, index, task) => {
+                if (index == 2) {
+                    setTimeout(() => {
+                        result += elem;
+                        task.next();
+                    }, 500);
+                }
+                else {
                     result += elem;
                     task.next();
-                }, 1000);
-            }
-            else {
-                result += elem;
-                task.next();
-            }
-        })
-        .finally(() => {
-            expect(result).to.equal('1243');
-            done();
-        })
-        .catch(() => {
-        })
-        .execAsync();
+                }
+            })
+            .finally(() => {
+                expect(result).to.equal('1243');
+                done();
+            })
+            .catch(() => {
+            })
+            .execAsync();
+    });
+
+    it('execAsync() - task.reject() should return 124', (done) => {
+        let result = '';
+
+        next()
+            .forEach([1, 2, 3, 4], (elem, index, task) => {
+                if (index == 2) {
+                    setTimeout(() => {
+                        task.reject();
+                    }, 500);
+                }
+                else {
+                    result += elem;
+                    task.next();
+                }
+            })
+            .finally(() => {
+            })
+            .catch(() => {
+                expect(result).to.equal('124');
+                done();
+            })
+            .execAsync();
     });
 });
