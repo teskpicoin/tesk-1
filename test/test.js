@@ -1,9 +1,9 @@
 'use strict';
 
 const expect = require('chai').expect;
-const next = require('../dist/next.js').next;
+const next = require('../dist/index.js').next;
 
-describe('next do test', () => {
+describe('do tests', () => {
     it('exec() should return 123', (done) => {
         let result = '';
 
@@ -112,7 +112,7 @@ describe('next do test', () => {
     });
 });
 
-describe('next forEach test', () => {
+describe('forEach tests', () => {
     it('exec() should return 1234', (done) => {
         let result = '';
 

@@ -2,8 +2,8 @@
 	"name": "next",
 	"version": "1.0.0",
 	"description": "A powerful and simple module to execute synchronous tasks or asynchronous tasks.",
-	"main": "./next.js",
-	"types": "./next.d.ts",
+	"main": "./index.js",
+	"types": "./index.d.ts",
 	"scripts": {
 		"build": "tsc",
 		"test": "mocha --reporter spec"
