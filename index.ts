@@ -29,6 +29,7 @@ class Next {
 	finallyFunction: any;
 	catchFunction: any;
 	forEachFunction: any;
+	execFunction: any;
 	forEachArray: any[];
 	currentTask: number;
 
@@ -50,7 +51,7 @@ class Next {
 	}
 
 	finally(callback: any): Next {
-		this.finallyFunction = callback;
+		this.callFinalyFunction = callback;
 		return this;
 	}
 
@@ -59,7 +60,9 @@ class Next {
 		return this;
 	}
 
-	exec() {
+	exec(callback: any) {
+		this.execFunction = callback;
+
 		if (this.forEachFunction) {
 			this.setTaskObj(() => this.execForEach());
 			this.execForEach();
@@ -70,12 +73,14 @@ class Next {
 		}
 	}
 
-	execAsync() {
+	execAsync(callback: any) {
+		this.execFunction = callback;
+
 		if (this.forEachFunction) {
 			this.setTaskObj(() => {
 				this.currentTask++;
 				if (this.currentTask == this.forEachArray.length - 1) {
-					this.finallyFunction();
+					this.callFinalyFunction();
 				}
 			});
 			this.execAsyncForEach();
@@ -84,7 +89,7 @@ class Next {
 			this.setTaskObj(() => {
 				this.currentTask++;
 				if (this.currentTask == this.tasks.length - 1) {
-					this.finallyFunction();
+					this.callFinalyFunction();
 				}
 			});
 			this.execAsyncTask();
@@ -95,7 +100,7 @@ class Next {
 		this.currentTask++;
 
 		if (this.currentTask == this.tasks.length) {
-			this.finallyFunction();
+			this.callFinalyFunction();
 		}
 		else {
 			this.tasks[this.currentTask](this.taskObj);
@@ -111,7 +116,7 @@ class Next {
 	private execForEach() {
 		this.currentTask++;
 		if (this.currentTask == this.forEachArray.length) {
-			this.finallyFunction();
+			this.callFinalyFunction();
 		}
 		else {
 			this.forEachFunction(this.forEachArray[this.currentTask], this.currentTask, this.taskObj);
@@ -124,10 +129,21 @@ class Next {
 		});
 	}
 
-	private setTaskObj(execFunction: any) {
+	private setTaskObj(nextFunction: any) {
 		this.taskObj = new Object();
-		this.taskObj.next = execFunction;
-		this.taskObj.reject = this.catchFunction;
+		this.taskObj.next = nextFunction;
+
+		if (this.execFunction)
+			this.taskObj.reject = this.execFunction;
+		else 
+			this.taskObj.reject = this.catchFunction;
+	}
+
+	private callFinalyFunction() {
+		if (this.execFunction)
+			this.execFunction(null);
+		else 
+			this.finallyFunction();
 	}
 
 }
