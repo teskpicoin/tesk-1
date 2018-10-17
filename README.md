@@ -4,15 +4,14 @@ It's a a powerful and simple [node](http://nodejs.org) module to execute synchro
 ## Installation
 
 ```bash
-$ npm install tesk
+$ npm install --save tesk
 ```
 
-## Basic usage
+## Sync usage
 
 ```javascript
 const tesk = require('tesk');
-const resultSync = new Array();
-const resultAsync = new Array();
+const result = new Array();
 
 /**
  * Execute sync
@@ -23,27 +22,34 @@ tesk()
 
 		// Simulating a asynchronous task like a database query
 		setTimeout(() => {
-			resultSync.push("task 1");
+			result.push("task 1");
 		}, 2000);
 
 		task.next();
 	})
 	.do((task) => {
 		console.log('Do something 2');
-		resultSync.push("task 2");
+		result.push("task 2");
 
 		task.next();
 	})
 	.do((task) => {
 		console.log('Do something 3');
-		resultSync.push("task 3");
+		result.push("task 3");
 		
 		task.next();
 	})
 	.exec((err) => {
 		console.log('All tasks finished!');
-		console.log('Results:', resultSync);
+		console.log('Results:', result);
 	});
+```
+
+## Async usage
+
+```javascript
+const tesk = require('tesk');
+const result = new Array();
 
 /**
  * Execute async
@@ -54,26 +60,26 @@ tesk()
 
 		// Simulating a asynchronous task like a database query
 		setTimeout(() => {
-			resultAsync.push("task 1");
+			result.push("task 1");
 
 			task.next();
 		}, 2000);
 	})
 	.do((task) => {
 		console.log('Do something 2');
-		resultAsync.push("task 2");
+		result.push("task 2");
 
 		task.next();
 	})
 	.do((task) => {
 		console.log('Do something 3');
-		resultAsync.push("task 3");
+		result.push("task 3");
 		
 		task.next();
 	})
 	.execAsync((err) => {
 		console.log('All tasks finished!');
-		console.log('Results:', resultAsync);
+		console.log('Results:', result);
 	});
 ```
 
