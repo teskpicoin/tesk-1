@@ -7,7 +7,8 @@ It's a a powerful and simple [node](http://nodejs.org) module to execute synchro
 $ npm install --save tesk
 ```
 
-## Sync - quick usage
+## Do Sync - quick usage
+Do Sync it's a list of tasks that you can create to execute in sequence one by one. When the last task was finished, the tesk go to callback exec function.
 
 ```javascript
 const tesk = require('tesk');
@@ -42,7 +43,8 @@ tesk()
     });
 ```
 
-## Async - quick usage
+## Do Async - quick usage
+Do Async it's a list of tasks that you can create to execute without order. When all tasks was finisheds, the tesk go to callback exec function. All tasks will be executed at same time (but not in parallel like a thread).
 
 ```javascript
 const tesk = require('tesk');
