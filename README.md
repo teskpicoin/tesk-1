@@ -37,7 +37,7 @@ tesk()
 * [do() - sync](#do---sync-usage)
 * [do() - async](#do---async-usage)
 * [forEach() - sync](#foreach---sync-usage)
-* [forEach() - async](#foreach---sync-usage)
+* [forEach() - async](#foreach---async-usage)
 
 ## do - sync usage
 Do Sync it's a list of tasks that you can create to execute in sequence one by one. When the last task was finished, the tesk go to callback in exec function.
