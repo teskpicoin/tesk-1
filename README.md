@@ -17,13 +17,13 @@ tesk()
         console.log('Do something 1');
 	result.push(1);
 	
-	task.next(); // Go to next
+	task.next(); // Go to next task
     })
     .do((task) => {
         console.log('Do something 2');
         result.push(2);
 
-        task.next(); // Go to next
+        task.next(); // Go to next task
     })
     .exec((err) => {
         console.log('All tasks finished!');
@@ -47,7 +47,7 @@ tesk()
         setTimeout(() => {
 	    result.push(1);
 
-	    task.next(); // Go to next
+	    task.next(); // Go to next task
         }, 2000);
     })
     .do((task) => {
@@ -60,7 +60,7 @@ tesk()
         console.log('Do something 3');
         result.push(3);
 
-        task.next(); // Go to next
+        task.next(); // Go to next task
     })
     .exec((err) => {
         console.log('All tasks finished!');
@@ -84,20 +84,20 @@ tesk()
         setTimeout(() => {
 	    result.push(1);
 
-	    task.next(); // Go to next
+	    task.next(); // Go to next task
         }, 2000);
     })
     .do((task) => {
         console.log('Do something 2');
         result.push(2);
 
-        task.next(); // Go to next
+        task.next(); // Go to next task
     })
     .do((task) => {
         console.log('Do something 3');
         result.push(3);
 
-        task.next(); // Go to next
+        task.next(); // Go to next task
     })
     .execAsync((err) => {
         console.log('All tasks finished!');
