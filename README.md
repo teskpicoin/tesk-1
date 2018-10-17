@@ -7,6 +7,8 @@ It's a a powerful and simple [node](http://nodejs.org) module to execute synchro
 $ npm install --save tesk
 ```
 
+#do tasks
+
 ## Sync usage
 
 ```javascript
