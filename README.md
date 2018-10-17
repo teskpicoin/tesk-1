@@ -33,11 +33,13 @@ tesk()
     });
 ```
 
-## Methods
+## Guide
 * [do(callback) - sync](#do---sync-usage)
 * [do(callback) - async](#do---async-usage)
 * [forEach(array, callback) - sync](#foreach---sync-usage)
 * [forEach(array, callback) - async](#foreach---async-usage)
+* [accept task]()
+* [reject task]()
 
 ## do(callback) - sync usage
 Do Sync it's a list of tasks that you can create to execute in sequence one by one. When the last task was finished, the tesk go to callback in exec function.
