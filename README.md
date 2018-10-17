@@ -1,4 +1,4 @@
-# tesk
+# Tesk
 It's a a powerful and simple [node](http://nodejs.org) module to execute synchronous tasks or asynchronous tasks.
 
 ## Installation
