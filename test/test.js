@@ -1,7 +1,7 @@
 'use strict';
 
 const expect = require('chai').expect;
-const next = require('../dist/index.js').next;
+const tesk = require('../dist/index.js');
 
 /**
  * do tests
@@ -10,7 +10,7 @@ describe('do tests', () => {
     it('exec() should return 123', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .do((task) => {
                 result += '1';
                 task.next();
@@ -37,7 +37,7 @@ describe('do tests', () => {
     it('exec() - task.reject() should return 1', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .do((task) => {
                 result += '1';
                 task.next();
@@ -63,7 +63,7 @@ describe('do tests', () => {
     it('exec() - short mode (without finally and catch) should return 123', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .do((task) => {
                 result += '1';
                 task.next();
@@ -87,7 +87,7 @@ describe('do tests', () => {
     it('exec() - task.reject() short mode (without finally and catch) should return error', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .do((task) => {
                 result += '1';
                 task.next();
@@ -111,7 +111,7 @@ describe('do tests', () => {
     it('execAsync() should return 132', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .do((task) => {
                 result += '1';
                 task.next();
@@ -138,7 +138,7 @@ describe('do tests', () => {
     it('execAsync() - task.reject() should return 13', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .do((task) => {
                 result += '1';
                 task.next();
@@ -164,7 +164,7 @@ describe('do tests', () => {
     it('execAsync() short mode (without finally and catch) should return 132', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .do((task) => {
                 result += '1';
                 task.next();
@@ -188,7 +188,7 @@ describe('do tests', () => {
     it('execAsync() - task.reject() short mode (without finally and catch) should return error', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .do((task) => {
                 result += '1';
                 task.next();
@@ -216,7 +216,7 @@ describe('forEach tests', () => {
     it('exec() should return 1234', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .forEach([1, 2, 3, 4], (elem, index, task) => {
                 if (index == 2) {
                     setTimeout(() => {
@@ -241,7 +241,7 @@ describe('forEach tests', () => {
     it('exec() - task.reject() should return 12', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .forEach([1, 2, 3, 4], (elem, index, task) => {
                 if (index == 2) {
                     setTimeout(() => {
@@ -265,7 +265,7 @@ describe('forEach tests', () => {
     it('exec() short mode (without finally and catch) should return 1234', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .forEach([1, 2, 3, 4], (elem, index, task) => {
                 if (index == 2) {
                     setTimeout(() => {
@@ -287,7 +287,7 @@ describe('forEach tests', () => {
     it('exec() - task.reject() short mode (without finally and catch) should return error', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .forEach([1, 2, 3, 4], (elem, index, task) => {
                 if (index == 2) {
                     setTimeout(() => {
@@ -308,7 +308,7 @@ describe('forEach tests', () => {
     it('execAsync() should return 1243', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .forEach([1, 2, 3, 4], (elem, index, task) => {
                 if (index == 2) {
                     setTimeout(() => {
@@ -333,7 +333,7 @@ describe('forEach tests', () => {
     it('execAsync() - task.reject() should return 124', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .forEach([1, 2, 3, 4], (elem, index, task) => {
                 if (index == 2) {
                     setTimeout(() => {
@@ -357,7 +357,7 @@ describe('forEach tests', () => {
     it('execAsync() short mode (without finally and catch) should return 1243', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .forEach([1, 2, 3, 4], (elem, index, task) => {
                 if (index == 2) {
                     setTimeout(() => {
@@ -379,7 +379,7 @@ describe('forEach tests', () => {
     it('execAsync() - task.reject() short mode (without finally and catch) should return error', (done) => {
         let result = '';
 
-        next()
+        tesk()
             .forEach([1, 2, 3, 4], (elem, index, task) => {
                 if (index == 2) {
                     setTimeout(() => {

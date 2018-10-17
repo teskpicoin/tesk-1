@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ***************************************************************************** */
 
-class Next {
+class Tesk {
 
 	tasks: any[];
 	taskObj: any;
@@ -39,7 +39,7 @@ class Next {
 		this.currentTask = -1;
 	}
 
-	do(task: any): Next {
+	do(task: any): Tesk {
 		this.tasks.push(task);
 		return this;
 	}
@@ -50,12 +50,12 @@ class Next {
 		return this;
 	}
 
-	finally(callback: any): Next {
+	finally(callback: any): Tesk {
 		this.callFinalyFunction = callback;
 		return this;
 	}
 
-	catch(callback: any): Next {
+	catch(callback: any): Tesk {
 		this.catchFunction = callback;
 		return this;
 	}
@@ -148,9 +148,5 @@ class Next {
 
 }
 
-function next() {
-	return new Next();
-}
-
-export { next };
+module.exports = () => new Tesk();
 
