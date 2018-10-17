@@ -39,7 +39,7 @@ tesk()
 * [forEach() - sync](#foreach---sync-usage)
 * [forEach() - async](#foreach---async-usage)
 
-## do - sync usage
+## do(callback) - sync usage
 Do Sync it's a list of tasks that you can create to execute in sequence one by one. When the last task was finished, the tesk go to callback in exec function.
 
 ```javascript
@@ -76,7 +76,7 @@ tesk()
     });
 ```
 
-## do - async usage
+## do(callback) - async usage
 Do Async it's a list of tasks that you can create to execute without order. When all tasks was finished, the tesk go to callback in exec function. All tasks will be executed at same time (but not in parallel like a thread).
 
 ```javascript
@@ -113,7 +113,7 @@ tesk()
     });
 ```
 
-## forEach - sync usage
+## forEach(array, callback) - sync usage
 ForEach sync is for iterate an array in sequence item by item and wait the current task finish to go to next item on array. When all tasks was finished, the tesk go to callback in exec function.
 
 ```javascript
@@ -140,7 +140,7 @@ tesk()
     });
 ```
 
-## forEach - async usage
+## forEach(array, callback) - async usage
 ForEach async is for iterate an array without order. When all tasks was finished, the tesk go to callback in exec function. All tasks will be executed at same time (but not in parallel like a thread).
 
 ```javascript
