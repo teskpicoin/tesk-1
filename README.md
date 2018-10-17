@@ -13,9 +13,6 @@ $ npm install --save tesk
 const tesk = require('tesk');
 const result = new Array();
 
-/**
- * Execute sync
- */
 tesk()
 	.do((task) => {
 		console.log('Do something 1');
@@ -51,9 +48,6 @@ tesk()
 const tesk = require('tesk');
 const result = new Array();
 
-/**
- * Execute async
- */
 tesk()
 	.do((task) => {
 		console.log('Do something 1');
