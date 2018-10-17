@@ -7,9 +7,7 @@ It's a a powerful and simple [node](http://nodejs.org) module to execute synchro
 $ npm install --save tesk
 ```
 
-# do tasks
-
-## Sync usage
+## Sync - quick usage
 
 ```javascript
 const tesk = require('tesk');
@@ -44,7 +42,7 @@ const result = new Array();
 	});
 ```
 
-## Async usage
+## Async - quick usage
 
 ```javascript
 const tesk = require('tesk');
