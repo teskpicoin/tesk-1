@@ -27,9 +27,14 @@ tesk()
         task.next(); // Go to next task
     })
     .exec((err) => {
-        console.log('All tasks finished!');
-	console.log('Result expected: [1, 2]');
-        console.log('Result:', result);
+	if (err) {
+	    console.log(err);
+	}
+	else {
+            console.log('All tasks finished!');
+	    console.log('Result expected: [1, 2]');
+            console.log('Result:', result);
+	}
     });
 ```
 
@@ -72,9 +77,14 @@ tesk()
         task.next(); // Go to next task
     })
     .exec((err) => {
-        console.log('All tasks finished!');
-	console.log('Result expected: [1, 2, 3]');
-        console.log('Result:', result);
+	if (err) {
+	    console.log(err);
+	}
+	else {
+            console.log('All tasks finished!');
+	    console.log('Result expected: [1, 2, 3]');
+            console.log('Result:', result);
+	}
     });
 ```
 
@@ -109,9 +119,14 @@ tesk()
         task.next(); // Go to next task
     })
     .execAsync((err) => {
-        console.log('All tasks finished!');
-	console.log('Result expected: [2, 3, 1]');
-        console.log('Result:', result);
+	if (err) {
+	    console.log(err);
+	}
+	else {
+            console.log('All tasks finished!');
+	    console.log('Result expected: [2, 3, 1]');
+            console.log('Result:', result);
+	}
     });
 ```
 
@@ -136,9 +151,14 @@ tesk()
         }
     })
     .exec((err) => {
-        console.log('All tasks finished!');
-	console.log('Result expected: [1, 2, 3, 4]');
-        console.log('Result:', result);
+        if (err) {
+	    console.log(err);
+	}
+	else {
+            console.log('All tasks finished!');
+	    console.log('Result expected: [1, 2, 3, 4]');
+            console.log('Result:', result);
+	}
     });
 ```
 
@@ -163,9 +183,14 @@ tesk()
         }
     })
     .execAsync((err) => {
-        console.log('All tasks finished!');
-	console.log('Result expected: [1, 2, 4, 3]');
-        console.log('Result:', result);
+    	if (err) {
+	    console.log(err);
+	}
+	else {
+            console.log('All tasks finished!');
+	    console.log('Result expected: [1, 2, 4, 3]');
+            console.log('Result:', result);
+	}
     });
 ```
 
