@@ -14,11 +14,14 @@ const tesk = require('tesk');
 const resultSync = new Array();
 const resultAsync = new Array();
 
-// Execute Sync
+/**
+ * Execute sync
+ */
 tesk()
 	.do((task) => {
 		console.log('Do something 1');
 
+		// Simulating a asynchronous task like a database query
 		setTimeout(() => {
 			resultSync.push("task 1");
 		}, 2000);
@@ -42,12 +45,14 @@ tesk()
 		console.log('Results:', resultSync);
 	});
 
-// Execute Async
+/**
+ * Execute async
+ */
 tesk()
 	.do((task) => {
 		console.log('Do something 1');
 
-		// Simulating a 
+		// Simulating a asynchronous task like a database query
 		setTimeout(() => {
 			resultAsync.push("task 1");
 
