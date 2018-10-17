@@ -169,6 +169,42 @@ tesk()
     });
 ```
 
+## Accept a task
+To accept a task just call the method next() from parameter task received on callback function. Error is null if all tasks was accepted.
+
+```javascript
+tesk()
+    .do((task) => {
+	task.next(); // Go to next task
+    })
+    .exec((err) => {
+        if (err) {
+	    console.log(err);
+	}
+	else {
+            console.log('All tasks finished!');
+	}
+    });
+```
+
+## Reject a task
+To reject a task just call the method reject() from parameter task received on callback function. When a task was rejected all tasks will be canceled and the callback function receive a personalized argument error.
+
+```javascript
+tesk()
+    .do((task) => {
+	task.reject('Error on execute query'); // Reject task and send a personalized error
+    })
+    .exec((err) => {
+    	if (err) {
+	    console.log(err);
+	}
+	else {
+            console.log('All tasks finished!');
+	}
+    });
+```
+
 ## Tests
 To run the test suite, first install the dependencies, then run npm run test:
 
