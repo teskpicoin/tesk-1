@@ -34,7 +34,7 @@ tesk()
 ```
 
 ## Methods
-* [do() - sync](#do---sync-usage)
+* [do(callback[task]) - sync](#do---sync-usage)
 * [do() - async](#do---async-usage)
 * [forEach() - sync](#foreach---sync-usage)
 * [forEach() - async](#foreach---async-usage)
