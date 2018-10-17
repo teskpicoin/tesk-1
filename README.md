@@ -13,7 +13,7 @@ $ npm install --save tesk
 const tesk = require('tesk');
 const result = new Array();
 
-tesk()
+  tesk()
 	.do((task) => {
 		console.log('Do something 1');
 
@@ -33,7 +33,7 @@ tesk()
 	.do((task) => {
 		console.log('Do something 3');
 		result.push("task 3");
-		
+
 		task.next();
 	})
 	.exec((err) => {
@@ -48,7 +48,7 @@ tesk()
 const tesk = require('tesk');
 const result = new Array();
 
-tesk()
+  tesk()
 	.do((task) => {
 		console.log('Do something 1');
 
