@@ -6,6 +6,30 @@ It's a a powerful and simple [node](http://nodejs.org) module to execute synchro
 ```bash
 $ npm install --save tesk
 ```
+## Quick usage
+
+```javascript
+const tesk = require('tesk');
+const result = new Array();
+
+tesk()
+    .do((task) => {
+        console.log('Do something 1');
+	result.push("task 1");
+	
+	task.next();
+    })
+    .do((task) => {
+        console.log('Do something 2');
+        result.push("task 2");
+
+        task.next();
+    })
+    .exec((err) => {
+        console.log('All tasks finished!');
+        console.log('Results:', result);
+    });
+```
 
 ## .do - sync usage
 Do Sync it's a list of tasks that you can create to execute in sequence one by one. When the last task was finished, the tesk go to callback in exec function.
