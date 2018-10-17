@@ -8,7 +8,7 @@ $ npm install --save tesk
 ```
 
 ## Do Sync - quick usage
-Do Sync it's a list of tasks that you can create to execute in sequence one by one. When the last task was finished, the tesk go to callback exec function.
+Do Sync it's a list of tasks that you can create to execute in sequence one by one. When the last task was finished, the tesk go to callback in exec function.
 
 ```javascript
 const tesk = require('tesk');
@@ -44,7 +44,7 @@ tesk()
 ```
 
 ## Do Async - quick usage
-Do Async it's a list of tasks that you can create to execute without order. When all tasks was finisheds, the tesk go to callback exec function. All tasks will be executed at same time (but not in parallel like a thread).
+Do Async it's a list of tasks that you can create to execute without order. When all tasks was finisheds, the tesk go to callback in exec function. All tasks will be executed at same time (but not in parallel like a thread).
 
 ```javascript
 const tesk = require('tesk');
