@@ -13,33 +13,33 @@ $ npm install --save tesk
 const tesk = require('tesk');
 const result = new Array();
 
-  tesk()
-	.do((task) => {
-		console.log('Do something 1');
+tesk()
+    .do((task) => {
+        console.log('Do something 1');
 
-		// Simulating a asynchronous task like a database query
-		setTimeout(() => {
-			result.push("task 1");
-		}, 2000);
+        // Simulating a asynchronous task like a database query
+        setTimeout(() => {
+	    result.push("task 1");
 
-		task.next();
-	})
-	.do((task) => {
-		console.log('Do something 2');
-		result.push("task 2");
+	    task.next();
+        }, 2000);
+    })
+    .do((task) => {
+        console.log('Do something 2');
+        result.push("task 2");
 
-		task.next();
-	})
-	.do((task) => {
-		console.log('Do something 3');
-		result.push("task 3");
+        task.next();
+    })
+    .do((task) => {
+        console.log('Do something 3');
+        result.push("task 3");
 
-		task.next();
-	})
-	.exec((err) => {
-		console.log('All tasks finished!');
-		console.log('Results:', result);
-	});
+        task.next();
+    })
+    .exec((err) => {
+        console.log('All tasks finished!');
+        console.log('Results:', result);
+    });
 ```
 
 ## Async - quick usage
@@ -48,33 +48,33 @@ const result = new Array();
 const tesk = require('tesk');
 const result = new Array();
 
-  tesk()
-	.do((task) => {
-		console.log('Do something 1');
+tesk()
+    .do((task) => {
+        console.log('Do something 1');
 
-		// Simulating a asynchronous task like a database query
-		setTimeout(() => {
-			result.push("task 1");
+        // Simulating a asynchronous task like a database query
+        setTimeout(() => {
+	    result.push("task 1");
 
-			task.next();
-		}, 2000);
-	})
-	.do((task) => {
-		console.log('Do something 2');
-		result.push("task 2");
+	    task.next();
+        }, 2000);
+    })
+    .do((task) => {
+        console.log('Do something 2');
+        result.push("task 2");
 
-		task.next();
-	})
-	.do((task) => {
-		console.log('Do something 3');
-		result.push("task 3");
-		
-		task.next();
-	})
-	.execAsync((err) => {
-		console.log('All tasks finished!');
-		console.log('Results:', result);
-	});
+        task.next();
+    })
+    .do((task) => {
+        console.log('Do something 3');
+        result.push("task 3");
+
+        task.next();
+    })
+    .execAsync((err) => {
+        console.log('All tasks finished!');
+        console.log('Results:', result);
+    });
 ```
 
 ## Tests
