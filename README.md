@@ -257,9 +257,30 @@ tesk()
 ```
 
 ## What not to do
-Never use do() and forEach() together. It's doesn't work. If you need use do() and forEach() you can just call tesk() again.
+Never use do() and forEach() together. 
 
- ```javascript
+```javascript
+tesk()
+    .do((task) => {
+	task.reject('Error on execute query'); // Reject task and send a personalized error
+    })
+    .forEach([1, 2, 3, 4], (elem, index, task) => {
+        console.log(elem, index);
+        task.next(); // Go to next task/item
+    })
+    .exec((err) => {
+    	if (err) {
+	    console.log(err);
+	}
+	else {
+	    console.log('All tasks finished!');
+	}
+    });
+```
+
+It's doesn't work. If you need use do() and forEach() you can just call tesk() again.
+
+```javascript
 tesk()
     .do((task) => {
 	task.reject('Error on execute query'); // Reject task and send a personalized error
@@ -269,7 +290,7 @@ tesk()
 	    console.log(err);
 	}
 	else {
-            console.log('Starting a forEach() tasks');
+	    console.log('Starting a forEach() tasks');
 	    
 	    tesk()
 		.forEach([1, 2, 3, 4], (elem, index, task) => {
@@ -296,7 +317,6 @@ tesk()
 	        });
 	}
     });
-    
 ```
 
 ## Tests
@@ -309,7 +329,7 @@ $ npm run test
 
 ## Coming Soon
 * tesk.try() - Like a promise.race()
-* exec() or execAsync() receive in callback result array of all tasks. Then you will can use task.next(12), and when all tasks was finished you can receive err and result parameters. Result will be equals an array [12]
+* exec() or execAsync() - Receive in callback result array of all tasks. Then you will can use task.next(12), and when all tasks was finished you can receive error and result parameters. Result will be equals an array [12]
 
 ## Related projects
 [async](https://github.com/caolan/async)
