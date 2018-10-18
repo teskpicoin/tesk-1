@@ -46,7 +46,7 @@ tesk()
 * [accept a task](#accept-a-task)
 * [reject a task](#reject-a-task)
 * [another way](#another-way)
-* [What not to do](#what-not-to-do)
+* [what not to do](#what-not-to-do)
 
 ## do(callback) - sync usage
 Do Sync it's a list of tasks that you can create to execute in sequence one by one. When the last task was finished, the tesk go to callback in exec function.
