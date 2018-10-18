@@ -257,7 +257,7 @@ tesk()
 ```
 
 ## What not to do
-Never use do() and forEach() together. 
+Never use do() and forEach() together. It's doesn't work.
 
 ```javascript
 tesk()
@@ -278,7 +278,7 @@ tesk()
     });
 ```
 
-It's doesn't work. If you need use do() and forEach() you can just call tesk() again.
+If you need use do() and forEach() you can just call tesk() again.
 
 ```javascript
 tesk()
