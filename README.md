@@ -47,6 +47,10 @@ tesk()
 * [reject a task](#reject-a-task)
 * [another way](#another-way)
 * [what not to do](#what-not-to-do)
+* [tests](#tests)
+* [coming soon](#coming-soon)
+* [related projects](#related-projects)
+* [license](#license)
 
 ## do(callback) - sync usage
 Do Sync it's a list of tasks that you can create to execute in sequence one by one. When the last task was finished, the tesk go to callback in exec function.
@@ -327,7 +331,7 @@ $ npm install
 $ npm run test
 ```
 
-## Coming Soon
+## Coming soon
 * tesk.try() - Like a promise.race()
 * exec() or execAsync() - Receive in callback result array of all tasks. Then you will can use task.next(12), and when all tasks was finished you can receive error and result parameters. Result will be equals an array [12]
 
