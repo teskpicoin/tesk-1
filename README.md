@@ -45,6 +45,8 @@ tesk()
 * [forEach(array, callback) - async](#foreach---async-usage)
 * [accept a task](#accept-a-task)
 * [reject a task](#reject-a-task)
+* [another way](#another-way)
+* [What not to do](#what-not-to-do)
 
 ## do(callback) - sync usage
 Do Sync it's a list of tasks that you can create to execute in sequence one by one. When the last task was finished, the tesk go to callback in exec function.
@@ -230,6 +232,73 @@ tesk()
     });
 ```
 
+## Another way
+Exist another way to use. Tesk have a finally and catch function. If you use finally and catch, you don't use a callback argument on exec() function
+
+```javascript
+tesk()
+    .do((task) => {
+	console.log('Do something 1');
+	
+	task.next();
+    })
+    .do((task) => {
+	console.log('Do something 2');
+	
+	task.next();
+    })
+    .finally(() => {
+	console.log('All tasks finished!');
+    })
+    .catch((err) => {
+    	console.log('Errors', err);
+    })
+    .exec();
+```
+
+## What not to do
+Never use do() and forEach() together. It's doesn't work. If you need use do() and forEach() you can just call tesk() again.
+
+ ```javascript
+tesk()
+    .do((task) => {
+	task.reject('Error on execute query'); // Reject task and send a personalized error
+    })
+    .exec((err) => {
+    	if (err) {
+	    console.log(err);
+	}
+	else {
+            console.log('Starting a forEach() tasks');
+	    
+	    tesk()
+		.forEach([1, 2, 3, 4], (elem, index, task) => {
+		    if (index == 2) {
+		        setTimeout(() => {
+			    result += elem;
+			    task.next(); // Go to next task/item
+		        }, 1);
+		    }
+		    else {
+		        result += elem;
+		        task.next();
+		    }
+	        })
+	        .execAsync((err) => {
+		    if (err) {
+		        console.log(err);
+		    }
+		    else {
+		        console.log('All tasks finished!');
+		        console.log('Result expected: [1, 2, 4, 3]');
+		        console.log('Result:', result);
+		    }
+	        });
+	}
+    });
+    
+```
+
 ## Tests
 To run the test suite, first install the dependencies, then run npm run test:
 
@@ -237,6 +306,10 @@ To run the test suite, first install the dependencies, then run npm run test:
 $ npm install
 $ npm run test
 ```
+
+## Coming Soon
+* tesk.try() - Like a promise.race()
+* exec() or execAsync() receive in callback result array of all tasks. Then you will can use task.next(12), and when all tasks was finished you can receive err and result parameters. Result will be equals an array [12]
 
 ## Related projects
 [async](https://github.com/caolan/async)
