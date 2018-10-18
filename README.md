@@ -10,13 +10,13 @@ $ npm install --save tesk
 ## Quick usage
 
 ```javascript
-const tesk = require('tesk');
+const tesk = require('tesk').tesk;
 const result = new Array();
 
 tesk()
     .do((task) => {
         console.log('Do something 1');
-	result.push(1);
+	    result.push(1);
 	
 	task.next(); // Go to next task
     })
@@ -27,14 +27,14 @@ tesk()
         task.next(); // Go to next task
     })
     .exec((err) => {
-	if (err) {
-	    console.log(err);
-	}
-	else {
+        if (err) {
+            console.log(err);
+        }
+        else {
             console.log('All tasks finished!');
-	    console.log('Result expected: [1, 2]');
+            console.log('Result expected: [1, 2]');
             console.log('Result:', result);
-	}
+        }
     });
 ```
 
@@ -56,7 +56,7 @@ tesk()
 Do Sync it's a list of tasks that you can create to execute in sequence one by one. When the last task was finished, the tesk go to callback in exec function.
 
 ```javascript
-const tesk = require('tesk');
+const tesk = require('tesk').tesk;
 const result = new Array();
 
 tesk()
@@ -65,9 +65,9 @@ tesk()
 
         // Simulating a asynchronous task like a database query
         setTimeout(() => {
-	    result.push(1);
+            result.push(1);
 
-	    task.next(); // Go to next task
+            task.next(); // Go to next task
         }, 2000);
     })
     .do((task) => {
@@ -83,14 +83,14 @@ tesk()
         task.next(); // Go to next task
     })
     .exec((err) => {
-	if (err) {
-	    console.log(err);
-	}
-	else {
+        if (err) {
+            console.log(err);
+        }
+        else {
             console.log('All tasks finished!');
-	    console.log('Result expected: [1, 2, 3]');
+            console.log('Result expected: [1, 2, 3]');
             console.log('Result:', result);
-	}
+        }
     });
 ```
 
@@ -98,7 +98,7 @@ tesk()
 Do Async it's a list of tasks that you can create to execute without order. When all tasks was finished, the tesk go to callback in exec function. All tasks will be executed at same time (but not in parallel like a thread).
 
 ```javascript
-const tesk = require('tesk');
+const tesk = require('tesk').tesk;
 const result = new Array();
 
 tesk()
@@ -107,9 +107,9 @@ tesk()
 
         // Simulating a asynchronous task like a database query
         setTimeout(() => {
-	    result.push(1);
+            result.push(1);
 
-	    task.next(); // Go to next task
+            task.next(); // Go to next task
         }, 2000);
     })
     .do((task) => {
@@ -125,12 +125,12 @@ tesk()
         task.next(); // Go to next task
     })
     .execAsync((err) => {
-	if (err) {
-	    console.log(err);
-	}
-	else {
+        if (err) {
+            console.log(err);
+        }
+        else {
             console.log('All tasks finished!');
-	    console.log('Result expected: [2, 3, 1]');
+            console.log('Result expected: [2, 3, 1]');
             console.log('Result:', result);
 	}
     });
@@ -140,31 +140,31 @@ tesk()
 ForEach sync is for iterate an array in sequence item by item and wait the current task finish to go to next item on array. When all tasks was finished, the tesk go to callback in exec function.
 
 ```javascript
-const tesk = require('tesk');
+const tesk = require('tesk').tesk;
 const result = new Array();
 
 tesk()
     .forEach([1, 2, 3, 4], (elem, index, task) => {
         if (index == 2) {
             setTimeout(() => {
-	        result.push(elem);
-	        task.next(); // Go to next task/item
+                result.push(elem);
+                task.next(); // Go to next task/item
             }, 1);
         }
         else {
-             result.push(elem);
+            result.push(elem);
             task.next(); // Go to next task/item
         }
     })
     .exec((err) => {
         if (err) {
-	    console.log(err);
-	}
-	else {
+	        console.log(err);
+	    }
+        else {
             console.log('All tasks finished!');
-	    console.log('Result expected: [1, 2, 3, 4]');
+            console.log('Result expected: [1, 2, 3, 4]');
             console.log('Result:', result);
-	}
+        }
     });
 ```
 
@@ -172,15 +172,15 @@ tesk()
 ForEach async is for iterate an array without order. When all tasks was finished, the tesk go to callback in exec function. All tasks will be executed at same time (but not in parallel like a thread).
 
 ```javascript
-const tesk = require('tesk');
+const tesk = require('tesk').tesk;
 const result = '';
 
 tesk()
     .forEach([1, 2, 3, 4], (elem, index, task) => {
         if (index == 2) {
             setTimeout(() => {
-	        result += elem;
-	        task.next(); // Go to next task/item
+                result += elem;
+                task.next(); // Go to next task/item
             }, 1);
         }
         else {
@@ -190,13 +190,13 @@ tesk()
     })
     .execAsync((err) => {
     	if (err) {
-	    console.log(err);
-	}
-	else {
+	        console.log(err);
+        }
+        else {
             console.log('All tasks finished!');
-	    console.log('Result expected: [1, 2, 4, 3]');
+            console.log('Result expected: [1, 2, 4, 3]');
             console.log('Result:', result);
-	}
+        }
     });
 ```
 
@@ -206,15 +206,15 @@ To accept a task just call the method next() from parameter task received on cal
 ```javascript
 tesk()
     .do((task) => {
-	task.next(); // Go to next task
+	    task.next(); // Go to next task
     })
     .exec((err) => {
         if (err) {
-	    console.log(err);
-	}
-	else {
+	        console.log(err);
+        }
+        else {
             console.log('All tasks finished!');
-	}
+        }
     });
 ```
 
@@ -224,15 +224,15 @@ To reject a task just call the method reject() from parameter task received on c
 ```javascript
 tesk()
     .do((task) => {
-	task.reject('Error on execute query'); // Reject task and send a personalized error
+	    task.reject('Error on execute query'); // Reject task and send a personalized error
     })
     .exec((err) => {
     	if (err) {
-	    console.log(err);
-	}
-	else {
+	        console.log(err);
+        }
+        else {
             console.log('All tasks finished!');
-	}
+        }
     });
 ```
 
@@ -242,17 +242,17 @@ Exist another way to use. Tesk have a finally and catch function. If you use fin
 ```javascript
 tesk()
     .do((task) => {
-	console.log('Do something 1');
-	
-	task.next();
+        console.log('Do something 1');
+        
+        task.next();
     })
     .do((task) => {
-	console.log('Do something 2');
-	
-	task.next();
+        console.log('Do something 2');
+        
+        task.next();
     })
     .finally(() => {
-	console.log('All tasks finished!');
+	    console.log('All tasks finished!');
     })
     .catch((err) => {
     	console.log('Errors', err);
@@ -266,7 +266,7 @@ Never use do() and forEach() together. It's doesn't work.
 ```javascript
 tesk()
     .do((task) => {
-	task.reject('Error on execute query'); // Reject task and send a personalized error
+	    task.reject('Error on execute query'); // Reject task and send a personalized error
     })
     .forEach([1, 2, 3, 4], (elem, index, task) => {
         console.log(elem, index);
@@ -274,11 +274,11 @@ tesk()
     })
     .exec((err) => {
     	if (err) {
-	    console.log(err);
-	}
-	else {
-	    console.log('All tasks finished!');
-	}
+	        console.log(err);
+        }
+        else {
+            console.log('All tasks finished!');
+        }
     });
 ```
 
@@ -291,35 +291,35 @@ tesk()
     })
     .exec((err) => {
     	if (err) {
-	    console.log(err);
-	}
-	else {
-	    console.log('Starting a forEach() tasks');
-	    
-	    tesk()
-		.forEach([1, 2, 3, 4], (elem, index, task) => {
-		    if (index == 2) {
-		        setTimeout(() => {
-			    result += elem;
-			    task.next(); // Go to next task/item
-		        }, 1);
-		    }
-		    else {
-		        result += elem;
-		        task.next();
-		    }
-	        })
-	        .execAsync((err) => {
-		    if (err) {
-		        console.log(err);
-		    }
-		    else {
-		        console.log('All tasks finished!');
-		        console.log('Result expected: [1, 2, 4, 3]');
-		        console.log('Result:', result);
-		    }
-	        });
-	}
+	        console.log(err);
+        }
+        else {
+            console.log('Starting a forEach() tasks');
+            
+            tesk()
+                .forEach([1, 2, 3, 4], (elem, index, task) => {
+                    if (index == 2) {
+                        setTimeout(() => {
+                            result += elem;
+                            task.next(); // Go to next task/item
+                        }, 1);
+                    }
+                    else {
+                        result += elem;
+                        task.next();
+                    }
+                })
+                .execAsync((err) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        console.log('All tasks finished!');
+                        console.log('Result expected: [1, 2, 4, 3]');
+                        console.log('Result:', result);
+                    }
+                });
+        }
     });
 ```
 

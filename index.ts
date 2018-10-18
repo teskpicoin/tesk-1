@@ -148,5 +148,9 @@ class Tesk {
 
 }
 
-module.exports = () => new Tesk();
+const tesk = function() {
+	return new Tesk();
+}
+
+export { tesk };
 

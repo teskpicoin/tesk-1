@@ -1,7 +1,7 @@
 'use strict';
 
 const expect = require('chai').expect;
-const tesk = require('../dist/index.js');
+const tesk = require('../dist/index.js').tesk;
 
 /**
  * do tests
