@@ -1,5 +1,5 @@
 # Tesk
-It's a a powerful and simple [node](http://nodejs.org) module to execute synchronous tasks or asynchronous tasks.
+It's a a powerful and simple [node](http://nodejs.org) module of high order functions to execute synchronous tasks or asynchronous tasks.
 
 ## Installation
 
@@ -237,6 +237,9 @@ To run the test suite, first install the dependencies, then run npm run test:
 $ npm install
 $ npm run test
 ```
+
+## Related projects
+[async](https://github.com/caolan/async)
 
 ## License
 [MIT](LICENSE)
