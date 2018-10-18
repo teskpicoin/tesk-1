@@ -2,8 +2,8 @@
 	"name": "tesk",
 	"version": "1.0.1",
 	"description": "A powerful and simple module to execute synchronous tasks or asynchronous tasks.",
-	"main": "./index.js",
-	"types": "./index.d.ts",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"scripts": {
 		"build": "tsc",
 		"test": "mocha --reporter spec"
