@@ -1,5 +1,5 @@
 # Tesk
-It's a a powerful and simple [node](http://nodejs.org) module of high order functions to execute synchronous tasks or asynchronous tasks.
+It's a powerful and simple [node](http://nodejs.org) module of high order functions to execute synchronous tasks or asynchronous tasks.
 
 ## Installation
 
