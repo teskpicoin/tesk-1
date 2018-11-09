@@ -60,7 +60,7 @@ class Tesk {
 		return this;
 	}
 
-	exec(callback: any) {
+	exec(callback?: any) {
 		this.execFunction = callback;
 
 		if (this.forEachFunction) {
@@ -73,7 +73,7 @@ class Tesk {
 		}
 	}
 
-	execAsync(callback: any) {
+	execAsync(callback?: any) {
 		this.execFunction = callback;
 
 		if (this.forEachFunction) {

@@ -35,8 +35,8 @@ declare class Tesk {
     forEach(array: any[], callback: any): this;
     finally(callback: any): Tesk;
     catch(callback: any): Tesk;
-    exec(callback: any): void;
-    execAsync(callback: any): void;
+    exec(callback?: any): void;
+    execAsync(callback?: any): void;
     private execTask;
     private execAsyncTask;
     private execForEach;
